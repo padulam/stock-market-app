@@ -1,0 +1,22 @@
+{
+  "name": "fcc-basejump-boilerplate",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Matthew Padula"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/padulam/fcc-basejump-boilerplate",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "bootstrap-social": "^5.1.1"
+  }
+}
