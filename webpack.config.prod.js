@@ -1,5 +1,4 @@
 var webpack = require('webpack');
-var StripLoader = require('strip-loader');
 var path = require('path');
 var port = process.env.PORT||8080;
 var BUILD_DIR = path.resolve(__dirname, 'public/js');
