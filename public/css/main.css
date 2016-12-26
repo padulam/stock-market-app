@@ -3,11 +3,18 @@ body{
   height: 100%;
 }
 
-#app{
+#stock-market-app{
   min-height: 100%;
 }
 
 .footer {
   width: 100%;
   padding: .5%;
+}
+
+.card{
+  height: 200px;
+  width: 400px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px black;
 }

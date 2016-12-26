@@ -1,29 +1,20 @@
-module.exports = function(app, passport){
+module.exports = function(app){
   var path = require('path');
   var dir = process.cwd();
+  var bodyParser = require('body-parser');
+  var StockMarketApi = require('../controllers/api/stockmarketapi');
+
+  var stockMarketApi = new StockMarketApi();
+  var jsonParser = bodyParser.json();
+
 
   app.get('/', function(request, response){
     response.sendFile(path.resolve(dir, 'public', 'index.html'));
   });
 
-  app.route('/logout')
-    .get(function(request, response){
-      request.logout();
-      response.redirect('/');
-    });
+  app.post('/api/stocks', jsonParser, stockMarketApi.addStock);
 
-  app.route('/api/user/:id')
-    .get(function(request, response){
-      response.json(request.user||null);
-    });
-
-  app.route('/auth/twitter')
-    .get(passport.authenticate('twitter'));
-
-  app.route('/auth/twitter/callback')
-    .get(passport.authenticate('twitter', {
-      successRedirect: '/',
-      failureRedirect: '/',
-      failureFlash: true
-    }));
+  app.delete('/api/stocks/:stock_id',stockMarketApi.removeStock);
+  
+  app.get('/api/stocks', stockMarketApi.getStockData);
 };
