@@ -2,10 +2,10 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT||3000;
 var mongoose = require('mongoose');
-var routes = require('./app/routes/index');
+var routes = require('./app/routes/index.js');
 
 if(port===3000){
-  require('dotenv').load()
+  require('dotenv').load();
   var webpack = require('webpack');
   var WebpackDevServer = require('webpack-dev-server');
   var devConfig = require('./webpack.config.dev');

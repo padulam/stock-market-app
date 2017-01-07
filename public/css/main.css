@@ -1,6 +1,7 @@
 html,
 body{
   height: 100%;
+  background-color: silver;
 }
 
 #stock-market-app{
@@ -12,9 +13,38 @@ body{
   padding: .5%;
 }
 
+.cards{
+  /*width: 100%;*/
+  /*margin: 0 auto;*/
+}
+
 .card{
-  height: 200px;
-  width: 400px;
+  height: 150px;
   padding: 20px;
   box-shadow: 1px 1px 1px black;
+  margin-top: 2%;
+  background-color: white;
+  font-size: 21px;
+  font-weight: 200;
+}
+
+#addStockHelper{
+  visibility: hidden;
+}
+
+#addStockInput,
+.add-stock-input-group{
+  width:100%;
+}
+
+.close-sign{
+  float: right;
+  color: silver;
+  background-color: white;
+  border: none;
+  font-size: 21px;
+}
+
+.close-sign:hover{
+  color: black;
 }

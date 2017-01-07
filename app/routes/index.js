@@ -14,7 +14,7 @@ module.exports = function(app){
 
   app.post('/api/stocks', jsonParser, stockMarketApi.addStock);
 
-  app.delete('/api/stocks/:stock_id',stockMarketApi.removeStock);
+  app.delete('/api/stocks/:stock_id', stockMarketApi.removeStock);
   
   app.get('/api/stocks', stockMarketApi.getStockData);
 };

@@ -5,7 +5,7 @@ export default class Layout extends React.Component {
   render(){
     return(
       <div>
-        <nav className="navbar navbar-default">
+        <nav className="navbar navbar-inverse">
           <div className="container">
             <div className="navbar-header">
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#voting-app-navbar" aria-expanded="false">

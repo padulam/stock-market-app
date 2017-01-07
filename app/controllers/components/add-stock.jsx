@@ -8,7 +8,7 @@ export default class AddStock extends React.Component {
     this.state = {symbol: undefined};
     
     this._changeStockSymbol = this._changeStockSymbol.bind(this);
-    this._addStock = this._addStock.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
 
   _changeStockSymbol(){
@@ -17,27 +17,26 @@ export default class AddStock extends React.Component {
     })
   }
 
-  _addStock(e){
+  _handleSubmit(e){
     e.preventDefault();
-    var appUrl = window.location.origin;
-    var apiUrl = appUrl + '/api/stocks';
-    var newStockData = this.state;
-
-    ajaxFunctions.ready(ajaxFunctions.ajaxRequest('POST', apiUrl, function(data){
-      //Update state with new stock information
-      console.log(data);
-    }, newStockData));
+    this.props.addStock(this.state);
+    this._symbol.value = "";
+    this.setState({symbol: undefined});
   }
 
   render(){
     return(
-      <div className="card" id="addStock">
-        <form method="post" onSubmit={this._addStock}>
-          <div className="form-group">
-            <label htmlFor="stockSymbol">Enter Stock Symbol:</label>
-            <input onChange={this._changeStockSymbol} ref={v => this._symbol = v} type="text" id="stockSymbol" className="form-control"/>
+      <div className="card col-lg-3 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1" id="addStock">
+        <form method="post" className="form-inline"  onSubmit={this._handleSubmit}>
+          <div id="addStockInput" className="form-group">
+            <div className="input-group add-stock-input-group">
+              <input placeholder="Enter Stock Symbol" onChange={this._changeStockSymbol} ref={v => this._symbol = v} type="text" id="stockSymbol" className="form-control" aria-describedby="addStockHelper"/>
+              <span className="input-group-btn">
+                <button className="btn btn-primary" type="submit">Add Stock</button>
+              </span>
+            </div>
+            <span className="help-block" id="addStockHelper"></span>
           </div>
-          <button className="btn btn-primary" type="submit">Add Stock</button>
         </form>
       </div>
     );
