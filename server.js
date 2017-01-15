@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT||3000;
 var mongoose = require('mongoose');
+var server = require('http').createServer(app);
+var io = require('socket.io')(server)
 var routes = require('./app/routes/index.js');
 
 if(port===3000){
@@ -26,6 +28,6 @@ app.use(express.static('public'));
 
 app.use('/bower_components', express.static('./bower_components'));
 
-routes(app);
+routes(app, io);
 
-app.listen(port);
+server.listen(port);
