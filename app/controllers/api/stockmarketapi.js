@@ -55,12 +55,20 @@ function StockMarketApi(){
   this.getStockChartData = function(request, response){
     var symbols = request.query.symbol;
     var elementsData = [];
-    for(var i=0;i<symbols.length;i++){
+    if(typeof symbols !== "string"){
+      for(var i=0;i<symbols.length;i++){
+        elementsData.push({
+            Symbol: symbols[i], 
+            Type: "price", 
+            Params: ["c"]
+        });
+      }
+    } else{
       elementsData.push({
-          Symbol: symbols[i], 
-          Type: "price", 
-          Params: ["c"]
-      });
+        Symbol: symbols, 
+        Type: "price", 
+        Params: ["c"]
+      })
     }
 
     var parameters = {
